@@ -39,11 +39,8 @@ namespace infini
         // TODO：返回经过 clip 操作后的 shape
         // REF: https://onnx.ai/onnx/operators/onnx__Clip.html#clip-13
         // =================================== 作业 ===================================
-        vector<Shape> output_dims;
+        vector<Shape> output_dims(numInputs(), inputs[0]->getDims());
 
-        for(const auto& input : inputs){
-            output_dims.push_back(input->getDims());
-        }
         return output_dims;
     }
 

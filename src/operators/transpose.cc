@@ -37,8 +37,6 @@ namespace infini
         if(inputs.empty()){
             return std::nullopt;
         }
-
-        auto permute = getPermute();
         vector<Shape> output_dims;
 
         for(const auto& input : inputs){
@@ -47,7 +45,7 @@ namespace infini
             auto output_dim = input_dim;
 
             for (int idx = 0; idx < rank; idx++){
-                output_dim[idx] = input_dim[permute[idx]];
+                output_dim[idx] = input_dim[transposePermute[idx]];
             }
 
             output_dims.push_back(output_dim);
